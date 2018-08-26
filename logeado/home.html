@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="img/logo.png">
+
+  <title>ECO </title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/home.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">
+      <img src="img/logo.png" alt="" width="30px" height="30px"> ECO</a>
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Buscar" aria-label="Search">
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="/logout">Salir</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-dark sidebar">
+        <div class="sidebar-sticky">
+          <br>
+          <br>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="home.html">
+                <span data-feather="home"></span>
+                Mi unidad
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="compartidos.html">
+                <span data-feather="file"></span>
+                Compartidos conmigo
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="perfil.html">
+                <span data-feather="file"></span>
+                Mi perfil
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file"></span>
+                Adquirir un plan
+              </a>
+            </li>
+
+          </ul>
+
+
+        </div>
+      </nav>
+
+
+
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Mi Unidad </h1>
+          <h6>
+            <a href="">Volver a carpeta inicial</a>
+          </h6>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+              <button type="button" class="btn btn-secondary mx-1" data-toggle="modal" data-target="#compCarpeta" id="compartirCarpeta">Compartir carpeta actual</button>
+              <button type="button" class="btn btn-secondary mx-1" data-toggle="modal" data-target="#crearCarpeta" id="btnCarpeta">Crear carpeta</button>
+              <button type="button" class="btn btn-secondary mx-1" data-toggle="modal" data-target="#crearArchivo" id="btnArchivo">Crear archivo</button>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-md-12 " id="main-container">
+          <input type="hidden" id="carpetaActual">
+          <div class="row">
+            <div id="container" class="row col-9">
+
+            </div>
+            <div class="d-none d-md-block col-3 sidebar-right" style="height: 100%; width: 10%">
+              <div class="sidebar-sticky">
+                <h3 id="tablaNombre"></h3>
+                <table class="table" id="table">
+
+                </table>
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="crearCarpeta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crear carpeta</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group row">
+              <label for="nombreCarpeta" class="col-sm-2 col-form-label">Nombre</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="nombreCarpeta" placeholder="Carpeta">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="privacidad" class="col-sm-2 col-form-label">Privacidad</label>
+              <div class="col-sm-10">
+                <select class="form-control" id="privacidad">
+                  <option value="1">Público</option>
+                  <option value="2">Privado</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="guardarCarpeta">Agregar carpeta</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="crearArchivo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crear archivo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group row">
+              <label for="nombreArchivo" class="col-sm-2 col-form-label">Nombre</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="nombreArchivo" placeholder="Nombre archivo">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="lenguaje" class="col-sm-2 col-form-label">Lenguaje</label>
+              <div class="col-sm-10">
+                <select class="form-control" id="lenguaje">
+
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="guardarArchivo">Crear archivo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="compCarpeta" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Compartir archivo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group row">
+              <label for="nombreUsuario" class="col-sm-2 col-form-label">Nombre usuario</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="nombreUsuario" placeholder="Username">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="acceso" class="col-sm-2 col-form-label">Tipo de acceso</label>
+              <div class="col-sm-10">
+                <select class="form-control" id="acceso">
+                  <option value="1">Editar</option>
+                  <option value="2">Solo visualizar</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="agregarUsuario">Agregar usuario</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="/js/vendor/jquery-slim.min.js"><\/script>')</script>
+  <script src="/js/vendor/popper.min.js"></script>
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/controlador.js"></script>
+  <script src="/js/controlador-home.js"></script>
+</body>
+
+</html>
